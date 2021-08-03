@@ -24,9 +24,12 @@ let package = Package(
     targets: [
         .target(
             name: "SVGKit",
-            dependencies: [
-                "CocoaLumberjack"
-            ],
+            
+            linkerSettings: [.linkedFramework("CocoaLumberjack",
+                                                                          .when(platforms: [.iOS,
+                                                                                            .macOS,
+                                                                                            .tvOS,
+                                                                                            .watchOS]))])
             path: "Source",
             exclude: [
                 "SwiftUI additions"
